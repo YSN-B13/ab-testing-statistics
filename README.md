@@ -1,47 +1,49 @@
 # 🧪 A/B Testing Analysis
 
 ## 📘 Project Overview
-This project implements a **comprehensive A/B testing analysis** to evaluate whether a modification in an experimental group (e.g., new design, feature, or algorithm) has a **statistically significant effect** compared to a control group.
+This project presents a **comprehensive A/B testing analysis** designed to evaluate whether a modification in an experimental group (e.g., new design, feature, or algorithm) produces a **statistically significant effect** compared to a control group.
 
-The notebook walks through each step of a rigorous statistical testing process — from hypothesis definition to significance testing and interpretation of results.
+The notebook guides you through each step of a rigorous statistical testing workflow — from hypothesis definition to significance testing and result interpretation.
 
 ---
 
-## 🎯 Purpose
-The main objective is to **determine if the conversion rate difference between two groups (Control vs Experimental)** is significant enough to justify deploying the experimental change.
+## 🎯 Objective
+The main goal is to **determine whether the difference in conversion rates between two groups (Control vs Experimental)** is statistically significant enough to justify implementing the experimental change.
 
-Specifically, the notebook helps answer:
+Specifically, the analysis aims to answer:
+
 > “Does the experiment lead to a measurable improvement in click-through or conversion performance?”
 
 ---
 
 ## 📈 Methodology
 
-### 1. **Hypothesis Setup**
-Formulates the null and alternative hypotheses:
+### 1. **Hypothesis Definition**
+We define the null and alternative hypotheses as follows:
 
 \[
 H_0: P_{con} = P_{exp} \\
 H_1: P_{con} \neq P_{exp}
 \]
 
-Where:
+Where:  
 - \( P_{con} \): Conversion rate of the control group  
 - \( P_{exp} \): Conversion rate of the experimental group  
 
 ---
 
 ### 2. **Parameter Definitions**
-Includes:
-- \( \alpha \): Significance level (Type I error)  
+Key statistical parameters include:
+
+- \( \alpha \): Significance level (Type I error rate)  
 - \( \beta \): Probability of Type II error  
 - \( (1 - \beta) \): Statistical power  
-- \( \delta \): Minimum detectable effect  
+- \( \delta \): Minimum detectable effect (MDE)  
 
 ---
 
 ### 3. **Proportion Estimation**
-Calculates proportions for both groups:
+Conversion rate (proportion) for each group is computed as:
 
 \[
 \hat{p}_{con} = \frac{\#clicks_{con}}{\#impressions_{con}}, \quad
@@ -50,8 +52,8 @@ Calculates proportions for both groups:
 
 ---
 
-### 4. **Pooled Variance and Standard Error**
-Computes pooled proportion and its variance to prepare for the z-test:
+### 4. **Pooled Variance & Standard Error**
+The pooled proportion and its variance are calculated to prepare for the z-test:
 
 \[
 \hat{p}_{pooled} = \frac{\#clicks_{con} + \#clicks_{exp}}{\#impressions_{con} + \#impressions_{exp}}
@@ -59,35 +61,27 @@ Computes pooled proportion and its variance to prepare for the z-test:
 
 ---
 
-### 5. **Z-Test for Proportions**
-Performs a **two-sample z-test** for the difference in proportions:
+### 5. **Z-Test for Difference in Proportions**
+A **two-sample z-test** is conducted to assess whether the observed difference is statistically significant:
 
 \[
 z = \frac{\hat{p}_{exp} - \hat{p}_{con}}{s_{pooled}}
 \]
 
-The resulting **p-value** is compared against \( \alpha = 0.05 \) to assess statistical significance.
+The corresponding **p-value** is then compared with \( \alpha = 0.05 \).
 
 ---
 
-### 6. **Interpretation**
-Interprets the statistical result:
-- If \( p < \alpha \): reject \( H_0 \) → significant difference  
-- If \( p \geq \alpha \): fail to reject \( H_0 \) → no significant difference  
-
----
-
-## 🧮 Tools & Libraries
-- **Python 3**
-- **NumPy** – numerical computations  
-- **SciPy** – statistical testing  
-- **Matplotlib / Seaborn** – visualization  
-- **Pandas** – data manipulation  
+### 6. **Result Interpretation**
+- If \( p < \alpha \): Reject \( H_0 \) → **Significant difference detected**  
+- If \( p \geq \alpha \): Fail to reject \( H_0 \) → **No significant difference**  
 
 ---
 
 ## 📊 Results Summary
-The notebook provides:
-- Conversion rate comparison between control and experiment  
-- Z-test and p-value computation  
-- Interpretation of whether the experimental group performs significantly better  
+The notebook outputs:
+- Conversion rate comparison between control and experimental groups  
+- Z-statistic and p-value calculations  
+- A clear interpretation of whether the experimental group performs significantly better  
+
+---
